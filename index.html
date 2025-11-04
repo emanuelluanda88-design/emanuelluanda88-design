@@ -3,237 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🤖 Challenger Bot Deriv Pro</title>
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <style>
-    body {
-      background-color: #0d1117;
-      color: #f0f0f0;
-      font-family: "Segoe UI", sans-serif;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #161b22;
-      padding: 15px 0;
-      border-bottom: 2px solid #2ea043;
-    }
-
-    h1 {
-      font-size: 1.6rem;
-      color: #2ea043;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    input, select, button {
-      width: 80%;
-      max-width: 300px;
-      padding: 10px;
-      margin: 10px;
-      border: none;
-      border-radius: 6px;
-      background-color: #21262d;
-      color: #f0f0f0;
-      text-align: center;
-    }
-
-    button {
-      background-color: #2ea043;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #3fb950;
-    }
-
-    footer {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #8b949e;
-    }
-
-    .grid {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .log {
-      background-color: #010409;
-      border: 1px solid #2ea043;
-      padding: 10px;
-      margin-top: 10px;
-      width: 85%;
-      height: 150px;
-      overflow-y: auto;
-      text-align: left;
-      font-size: 0.9rem;
-    }
-  </style>
+  <title>Challenger Revolution Pro</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.png" />
 </head>
 
 <body>
-  <header>
-    <h1>🤖 Challenger Bot Deriv Pro</h1>
-    <p>App ID: <strong>110191</strong></p>
+  <header class="header">
+    <div class="logo">
+      <img src="favicon.png" alt="Bot Logo" class="logo-img" />
+      <div>
+        <h1>Challenger Revolution</h1>
+        <p class="subtitle">Operações automatizadas Deriv</p>
+      </div>
+    </div>
+    <div class="status">
+      <span id="status" class="connected">🟢 Conectado à Deriv</span>
+    </div>
   </header>
 
-  <main>
-    <section class="card">
-      <h2>Conexão & Login</h2>
-      <div class="grid">
-        <input id="appId" value="110191" placeholder="App ID" />
-        <input id="token" placeholder="Cole aqui seu token opcional" />
-        <button id="connectBtn">Conectar à Deriv</button>
+  <main class="dashboard">
+    <!-- PAINEL DO GRÁFICO -->
+    <section class="chart">
+      <h2>📈 Últimos Dígitos</h2>
+      <canvas id="digitChart"></canvas>
+      <div class="stats">
+        <span>Lucro Total: <strong id="profitTotal">$0.00</strong></span>
+        <span>Operações: <strong id="operations">0 / 0</strong></span>
       </div>
     </section>
 
-    <section>
-      <h2>Configurações do Bot</h2>
-      <input id="stake" type="number" value="0.35" placeholder="Stake / Entrada" />
-      <input id="stopLoss" type="number" value="10" placeholder="Stop Loss ($)" />
-      <input id="stopGain" type="number" value="10" placeholder="Stop Gain ($)" />
-      <input id="meta" type="number" value="5" placeholder="Meta de Lucro ($)" />
-      <input id="gale" type="number" value="2" placeholder="Gale Máximo" />
+    <!-- CONFIGURAÇÕES -->
+    <section class="control">
+      <h2>⚙️ Configurações</h2>
 
-      <select id="estrategia">
-        <option value="scalper">Scalper</option>
-        <option value="contador1">Contador 1</option>
-        <option value="contador2">Contador 2</option>
-        <option value="par">Par</option>
-        <option value="impar">Ímpar</option>
-        <option value="inferior5">Inferior a 5</option>
-      </select>
+      <div class="input-group">
+        <label>Stake / Entrada</label>
+        <input id="stake" type="number" value="0.35" step="0.01" />
+      </div>
 
-      <button id="startBot">▶️ Iniciar Bot</button>
-      <button id="stopBot">⏹️ Parar Bot</button>
+      <div class="input-group">
+        <label>Meta (Profit)</label>
+        <input id="meta" type="number" value="10" />
+      </div>
 
-      <div class="log" id="log"></div>
+      <div class="input-group">
+        <label>Stop Loss</label>
+        <input id="stop" type="number" value="10" />
+      </div>
+
+      <div class="input-group">
+        <label>Moeda</label>
+        <select id="currency">
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>Estratégia</label>
+        <select id="estrategia">
+          <option value="par">Par</option>
+          <option value="impar">Ímpar</option>
+          <option value="superior5">Superior a 5</option>
+          <option value="inferior5">Inferior a 5</option>
+          <option value="scalper">Scalper</option>
+          <option value="contador1">Contador 1</option>
+          <option value="contador2">Contador 2</option>
+        </select>
+      </div>
+
+      <div class="buttons">
+        <button id="start" class="btn-start">▶️ Iniciar</button>
+        <button id="stopBot" class="btn-stop">⏸️ Parar</button>
+      </div>
+    </section>
+
+    <!-- LOG DAS OPERAÇÕES -->
+    <section class="log">
+      <h2>📊 Histórico</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Tipo</th>
+            <th>Tick</th>
+            <th>Preço</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody id="logTable"></tbody>
+      </table>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Challenger Revolution — Todos os direitos reservados.</p>
+  <footer class="footer">
+    <p>© 2025 Challenger Revolution | Desenvolvido por Emanuel Luanda</p>
   </footer>
 
-  <script>
-    const appIdInput = document.getElementById("appId");
-    const tokenInput = document.getElementById("token");
-    const log = document.getElementById("log");
-
-    let connection = null;
-    let lucroTotal = 0;
-    let conectado = false;
-    let operando = false;
-
-    function logar(msg) {
-      log.innerHTML += msg + "<br>";
-      log.scrollTop = log.scrollHeight;
-    }
-
-    document.getElementById("connectBtn").addEventListener("click", () => {
-      const appId = appIdInput.value;
-      const token = tokenInput.value;
-
-      connection = new WebSocket(`wss://ws.derivws.com/websockets/v3?app_id=${appId}`);
-      connection.onopen = () => {
-        conectado = true;
-        logar("✅ Conectado à Deriv API!");
-        if (token) {
-          connection.send(JSON.stringify({ authorize: token }));
-        }
-      };
-
-      connection.onerror = (err) => logar("❌ Erro de conexão: " + err);
-      connection.onclose = () => logar("🔴 Conexão encerrada.");
-    });
-
-    document.getElementById("startBot").addEventListener("click", () => {
-      if (!conectado) {
-        alert("Conecte-se à Deriv primeiro!");
-        return;
-      }
-
-      const stake = parseFloat(document.getElementById("stake").value);
-      const stopLoss = parseFloat(document.getElementById("stopLoss").value);
-      const stopGain = parseFloat(document.getElementById("stopGain").value);
-      const estrategia = document.getElementById("estrategia").value;
-
-      operando = true;
-      logar("🚀 Bot iniciado com estratégia: " + estrategia.toUpperCase());
-
-      executarOperacao(estrategia, stake, stopLoss, stopGain);
-    });
-
-    document.getElementById("stopBot").addEventListener("click", () => {
-      operando = false;
-      logar("🛑 Bot parado manualmente.");
-    });
-
-    function executarOperacao(estrategia, stake, stopLoss, stopGain) {
-      if (!operando) return;
-
-      const contratos = {
-        scalper: "DIGITOVER",
-        contador1: "DIGITUNDER",
-        contador2: "DIGITDIFF",
-        par: "EVEN",
-        impar: "ODD",
-        inferior5: "DIGITUNDER",
-      };
-
-      const contratoTipo = contratos[estrategia];
-      logar("📡 Enviando contrato: " + contratoTipo);
-
-      connection.send(JSON.stringify({
-        buy: 1,
-        price: stake,
-        parameters: {
-          amount: stake,
-          basis: "stake",
-          contract_type: contratoTipo,
-          currency: "USD",
-          duration: 1,
-          duration_unit: "t",
-          symbol: "R_100"
-        }
-      }));
-
-      connection.onmessage = (msg) => {
-        const data = JSON.parse(msg.data);
-
-        if (data.msg_type === "buy") {
-          logar("🟢 Contrato comprado com sucesso.");
-        }
-
-        if (data.msg_type === "proposal_open_contract" && data.proposal_open_contract.profit) {
-          const lucro = parseFloat(data.proposal_open_contract.profit);
-          lucroTotal += lucro;
-
-          logar("💰 Resultado: " + lucro.toFixed(2) + " | Total: " + lucroTotal.toFixed(2));
-
-          if (lucroTotal >= stopGain) {
-            logar("🎯 Meta atingida! Bot encerrado.");
-            operando = false;
-            return;
-          }
-
-          if (lucroTotal <= -stopLoss) {
-            logar("⚠️ Stop Loss atingido! Bot encerrado.");
-            operando = false;
-            return;
-          }
-
-          if (operando) setTimeout(() => executarOperacao(estrategia, stake, stopLoss, stopGain), 3000);
-        }
-      };
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="bot.js"></script>
 </body>
 </html>
