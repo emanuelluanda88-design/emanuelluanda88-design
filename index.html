@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Challenger Bot Deriv Pro</title>
 
+  <!-- Ícones para dispositivos e navegadores -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="estilo.css" />
+
+  <!-- Meta Tags adicionais -->
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Challenger Bot Deriv Pro — login e controle de estratégias automáticas para conta demo e real.">
+</head>
+
+<body>
+  <header class="topbar">
+    <h1>🤖 Challenger Bot Deriv Pro</h1>
+    <span class="badge">App ID: <strong>110191</strong></span>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Conexão & Login</h2>
+      <div class="grid">
+        <label>
+          <span>App ID</span>
+          <input id="appId" value="110191" />
+        </label>
+
+        <label>
+          <span>Token (opcional se usar OAuth)</span>
+          <input id="token" type="text" placeholder="Cole aqui seu token opcional" />
+        </label>
+
+        <button id="connectBtn">Conectar à Deriv</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Função para redirecionar e autenticar o usuário
+    document.getElementById('connectBtn').addEventListener('click', () => {
+      const appId = document.getElementById('appId').value;
+      const token = document.getElementById('token').value;
+      const redirect = 'https://app.deriv.com';
+      const url = token
+        ? `${redirect}/?token=${token}`
+        : `${redirect}/?app_id=${appId}`;
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
