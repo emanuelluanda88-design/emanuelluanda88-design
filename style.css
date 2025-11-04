@@ -1,140 +1,130 @@
-/* ============
-   Challenger Bot Deriv Pro - estilo.css
-   Criado por Emanuel Luanda
-   ============ */
-
-* {
+body {
+  background: #0f172a;
+  color: #e5e7eb;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
-body {
-  background: linear-gradient(135deg, #000000, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
-  min-height: 100vh;
+.header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-start;
-  padding: 30px 15px;
+  background: #1e293b;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #2563eb;
 }
 
-/* Cabeçalho */
-.topbar {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.topbar h1 {
-  font-size: 1.8rem;
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.badge {
-  display: inline-block;
-  background: #0072ff;
-  padding: 5px 10px;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 0.9rem;
-  margin-top: 8px;
-}
-
-/* Container principal */
-.container {
-  width: 100%;
-  max-width: 480px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  padding: 30px 25px;
-  transition: all 0.3s ease-in-out;
-}
-
-.container:hover {
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-}
-
-/* Card interno */
-.card h2 {
-  text-align: center;
-  color: #00c6ff;
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-}
-
-.grid {
+.logo {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 10px;
 }
 
-/* Labels e inputs */
-label {
+.logo-img {
+  width: 48px;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: #93c5fd;
+  margin-top: -4px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.chart {
+  background: #1e293b;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #0005;
+}
+
+.stats {
   display: flex;
-  flex-direction: column;
-  color: #ccc;
-  font-size: 0.9rem;
-}
-
-input {
-  margin-top: 6px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #00c6ff;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-input:focus {
-  border-color: #00ffea;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Botão principal */
-button {
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
-  border: none;
-  border-radius: 10px;
-  color: #fff;
+  justify-content: space-between;
   font-weight: 600;
+  margin-top: 1rem;
+}
+
+.control {
+  background: #1e293b;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 0.9rem;
+  color: #93c5fd;
+}
+
+input, select {
+  width: 100%;
+  background: #0f172a;
+  color: #fff;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  padding: 0.5rem;
   font-size: 1rem;
-  padding: 12px;
+}
+
+.btn-start, .btn-stop {
+  width: 100%;
+  padding: 0.8rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  margin-top: 0.5rem;
 }
 
-button:hover {
-  background: linear-gradient(90deg, #0072ff, #00c6ff);
-  transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+.btn-start { background: #22c55e; color: #fff; }
+.btn-stop { background: #ef4444; color: #fff; }
+
+.log {
+  grid-column: span 2;
+  background: #0f172a;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
-/* Responsividade */
-@media (max-width: 500px) {
-  body {
-    padding: 20px;
-  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  .container {
-    padding: 25px 20px;
-  }
+th, td {
+  text-align: left;
+  padding: 0.5rem;
+}
 
-  .topbar h1 {
-    font-size: 1.4rem;
-  }
+th {
+  color: #93c5fd;
+}
 
-  button {
-    font-size: 0.9rem;
+td {
+  border-bottom: 1px solid #1f2937;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1e293b;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
   }
 }
