@@ -1,1 +1,20 @@
-# Challenger-Revolution
+:root { --bg:#0b0c10; --card:#161a21; --text:#e8e8e8; --muted:#9aa3af; --accent:#00bfff; --ok:#22c55e; --warn:#ef4444; }
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; background:linear-gradient(135deg,#0b0c10,#111822); color:var(--text); font-family:system-ui,Arial,sans-serif; }
+.topbar { display:flex; justify-content:space-between; align-items:center; padding:16px 20px; background:#0d1117; border-bottom:1px solid #1f2937; position:sticky; top:0; z-index:10; }
+.topbar h1 { margin:0; font-size:18px; color:var(--accent); }
+.badge { background:#0b2a38; color:#9bdcff; padding:6px 10px; border-radius:999px; font-size:12px; }
+.container { max-width:980px; margin:22px auto; padding:0 12px; display:grid; gap:16px; }
+.card { background:var(--card); border:1px solid #1f2937; border-radius:16px; padding:16px; box-shadow:0 10px 22px rgba(0,0,0,.25); }
+.card h2 { margin:0 0 10px; font-size:16px; }
+.grid { display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+.row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+input,select,button { width:100%; padding:10px 12px; border-radius:10px; border:1px solid #273244; background:#0f141c; color:var(--text); }
+button { background:var(--accent); color:#002031; border:none; font-weight:600; cursor:pointer; }
+button:hover { filter:brightness(1.08); }
+.muted { color:var(--muted); font-size:12px; }
+.tableWrap { overflow:auto; }
+.table { width:100%; border-collapse:collapse; font-size:13px; }
+.table th,.table td { border-top:1px solid #243040; padding:8px; text-align:left; }
+.footer { text-align:center; padding:20px; color:#9aa3af; }
+#sparkline { height:80px; margin-top:8px; border:1px dashed #253247; border-radius:10px; }
